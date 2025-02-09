@@ -30,6 +30,7 @@ namespace InboxOutboxPatternDemo.Controllers
 
                 var outboxMessage = new OrderOutbox
                 {
+                    IdempotentToken = customerCreatedEvent.IdempotentToken,
                     EventPayload = JsonSerializer.Serialize(customerCreatedEvent),
                     EventType = nameof(OrderCreatedEvent),
                     EventDate = DateTime.UtcNow,
